@@ -1,0 +1,31 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    height: 60vh;
+    background-color: darkcyan;
+    border-radius: 20%;
+  }
+  
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+  }
+  
+  .form-field {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .form-button {
+    align-self: center;
+    margin-top: 20px;
+  }

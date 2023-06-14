@@ -1,0 +1,21 @@
+.appcontainer{
+width: 100%;
+height: 100%;
+
+}
+.appheader{
+    
+    width: 100%;
+   
+}
+.appsidebar{
+   
+    height: 100%;
+ 
+}
+.approuter{
+
+    background-color: antiquewhite;
+    height:100%;
+    margin: 20px;
+}

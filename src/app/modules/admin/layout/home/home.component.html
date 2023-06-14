@@ -1,0 +1,30 @@
+<!-- 
+
+<div style="display: flex; justify-content: flex-end;">
+    <div style="width: 70%; background-color: rgb(228, 180, 180);">
+        <app-header></app-header>
+    </div>
+</div>
+<div style="display: flex; flex-direction: row;">
+    <div style="flex: 1;">
+        <app-sidebar></app-sidebar>
+    </div>
+
+    <div style="flex: 1; padding: 10px;">
+        <router-outlet></router-outlet>
+    </div>
+</div> -->
+
+<mat-drawer-container class="appcontainer">
+    
+    <mat-drawer mode="side" opened class="appsidebar">
+        <app-sidebar></app-sidebar>
+    </mat-drawer>
+    
+    <mat-drawer-content>
+        <div class="appheader">
+            <app-header></app-header></div>
+            <div class="approuter"> <router-outlet></router-outlet></div>
+    </mat-drawer-content>
+    
+  </mat-drawer-container>

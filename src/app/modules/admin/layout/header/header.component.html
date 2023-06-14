@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="menu-icon" 
+    [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="menu-spacer"></span>
+  <button mat-icon-button class="personicon" [matMenuTriggerFor]="userMenu">
+    <mat-icon>person</mat-icon>
+  </button>
+  <mat-icon>share</mat-icon>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+
+</mat-menu>
+
+<mat-menu #userMenu="matMenu" >
+  <ng-template matMenuContent >
+    <div class="userinfo">
+      <div>
+        <span>{{ userad }}</span>:
+        <span>{{ username }}</span>
+      </div>
+
+      <div>
+        <span>{{ userEmail }}</span>:
+        <span>{{ email }}</span>
+      </div>
+
+    </div>
+    <button mat-menu-item class="btn" (click)="logout()">Çıkış Yap</button>
+  </ng-template>
+</mat-menu>

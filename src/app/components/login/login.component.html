@@ -1,0 +1,16 @@
+<div class="form-container">
+    <div class="form-wrapper">
+        <h1 style="text-align: center;">kullanıcı giriş ekranı</h1>
+        <dx-text-box name="Login" class="form-field">
+            <dx-validator>
+                <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dx-validator>
+        </dx-text-box>
+        <dx-text-box name="Password" mode="password" class="form-field">
+            <dx-validator>
+                <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dx-validator>
+        </dx-text-box>
+        <dx-button text="Submit" type="success" [useSubmitBehavior]="true" class="form-button" (onClick)="  onSubmit()"></dx-button>
+    </div>
+</div>

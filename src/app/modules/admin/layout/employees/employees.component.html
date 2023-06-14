@@ -1,0 +1,179 @@
+<dx-data-grid id="grid" 
+[dataSource]="dataSource"
+ [showBorders]="true" keyExpr="id"
+ (onRowUpdated)="updateEmployee($event)"
+  (onSelectionChanged)="selectedChanged($event)">
+
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[10, 25, 50, 100]"
+  ></dxo-pager>
+  <dxo-search-panel [visible]="true"></dxo-search-panel>
+
+  <dxo-toolbar>
+    <dxi-item name="groupPanel"></dxi-item>
+    <dxi-item location="after">
+        <dx-button class="popup" text="New Add" (onClick)="togglePopup()">
+        </dx-button>
+    </dxi-item>
+    <dxi-item location="after">
+      <ng-template dxTemplate="cellTemplate" let-data="rowData">
+
+      </ng-template>
+  </dxi-item>
+    <dxi-item name="searchPanel"></dxi-item>
+</dxo-toolbar>
+<dxo-editing
+mode="row"
+[allowUpdating]="true"
+
+[allowDeleting]="true"
+[allowAdding]="true"
+>
+</dxo-editing>
+  <dxo-scrolling [mode]="scrollingMode"></dxo-scrolling>
+  <dxo-selection mode="single"></dxo-selection>
+  <dxo-paging [enabled]="false"></dxo-paging>
+
+ 
+
+  <dxi-column dataField="id" ></dxi-column>
+  <dxi-column dataField="firstName" ></dxi-column>
+  <dxi-column dataField="lastName"></dxi-column>
+  <dxi-column caption="Title" dataField="title"></dxi-column>
+  <dxi-column dataField="position"></dxi-column>
+  <dxi-column dataField="birthDate" dataType="date"></dxi-column>
+  <dxi-column dataField="hireDate" dataType="date"></dxi-column>
+  <dxi-column dataField="notes"></dxi-column>
+  <dxi-column dataField="address"></dxi-column>
+  <dxi-column dataField="countryCode"></dxi-column>
+
+  <div *dxTemplate="let d of employee">
+    <div class="chart-cell">
+      <dx-bullet [showTarget]="false" [showZeroLevel]="true" [startScaleValue]="0" [endScaleValue]="100"
+        [value]="d.value * 100">
+        <dxo-size [width]="150" [height]="35"></dxo-size>
+        <dxo-tooltip [enabled]="true" [paddingTopBottom]="2">
+          <dxo-font [size]="18"></dxo-font>
+        </dxo-tooltip>
+        <dxo-margin [top]="5" [bottom]="0" [left]="5"></dxo-margin>
+      </dx-bullet>
+    </div>
+  </div>
+
+
+</dx-data-grid>
+
+ <div>
+  <dx-popup [(visible)]="isPopupVisible" [hideOnOutsideClick]="true" contentTemplate="popup-content">
+    <div *dxTemplate="let data of 'popup-content'">
+  
+      <div class="dx-field">
+        <div class="dx-field-label">First Name</div>
+        <div class="dx-field-value">
+          <dx-text-box placeholder="First Name" [(value)]="newEmployee.firstName"></dx-text-box>
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">Last Name</div>
+        <div class="dx-field-value">
+          <dx-text-box placeholder="Last Name" [(value)]="newEmployee.lastName"></dx-text-box>
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">Title</div>
+        <div class="dx-field-value">
+          <dx-text-box placeholder="Title" [(value)]="newEmployee.title"></dx-text-box>
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">Position</div>
+        <div class="dx-field-value">
+          <dx-text-box placeholder="Position" [(value)]="newEmployee.position"></dx-text-box>
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">Country Code</div>
+        <div class="dx-field-value">
+
+            <select [(ngModel)]="selectedCountryCode" name="countryCode">
+              <option *ngFor="let country of countries" [value]="country.code">{{ country.definition }}</option>
+            </select>
+
+   </div>
+      </div>
+   
+   
+      <div class="dx-field">
+        <div class="dx-field-label">birth Date</div>
+        <div class="dx-field-value">
+          <dx-date-box placeholder="birthDate" [(ngModel)]="newEmployee.birthDate"></dx-date-box>
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">Hire Date</div>
+        <div class="dx-field-value">
+          <dx-date-box placeholder="hireDate" [(ngModel)]="newEmployee.hireDate"></dx-date-box>
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">Notes</div>
+        <div class="dx-field-value">
+          <dx-text-box placeholder="notes" [(value)]="newEmployee.notes"></dx-text-box>
+        </div>
+      </div>
+        <div class="dx-field">
+          <div class="dx-field-label">Address</div>
+          <div class="dx-field-value">
+            <dx-text-box placeholder="Address" [(value)]="newEmployee.address"></dx-text-box>
+          </div>
+      </div>
+     
+
+  
+      <dx-button class="Kaydet" text="Save" (onClick)="addNewEmployee()"></dx-button>
+      <dx-button class="Kaydet" text="Cancel" (onClick)="togglePopup()"></dx-button>
+    </div>
+  </dx-popup>
+  
+
+</div>
+
+<dx-popup
+[width]="300"
+[height]="280"
+[showTitle]="true"
+title="Bilgi"
+[(visible)]="PopupInformation" 
+[dragEnabled]="false"
+[hideOnOutsideClick]="true"
+[showCloseButton]="false"
+
+
+>
+
+<div *dxTemplate="let data of 'content'">
+<p>Kaydınız Başarıyla Güncellenmiştir</p>
+</div>
+</dx-popup>
+
+
+<dx-popup
+[width]="300"
+[height]="280"
+[showTitle]="true"
+title="Bilgi"
+[(visible)]="PopupEror" 
+[dragEnabled]="false"
+[hideOnOutsideClick]="true"
+[showCloseButton]="false"
+
+
+>
+
+<div *dxTemplate="let data of 'content'">
+<p>Kaydınınız Güncellenmemiştir yöneticinizle iletişime geçiniz</p>
+</div>
+</dx-popup>
+ 

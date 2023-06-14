@@ -1,0 +1,16 @@
+
+<div class="container" style="background-color: rgb(247, 238, 238);">
+  <div class="left-content">
+    <div id="container">
+      <div class="logo">
+        <img src="https://meetpt.com/wp-content/uploads/2016/04/meetpoint-logo-cover-1.jpg" ></div>
+      <dx-tree-view selectionMode="single" [selectByClick]="true">
+        <ng-container *ngFor="let menuItem of menuItems">
+        
+          <dxi-item [routerLink]="menuItem.link">{{ menuItem.text }}</dxi-item>
+     
+      </ng-container>
+    </dx-tree-view>
+    </div>
+  </div>
+</div>
